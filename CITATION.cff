@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: subgaph-filter-suit
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Yael
+    name-particle: Ginzburg
+    affiliation: Bar-Ilan University
+    email: yaelginzburg@campus.technion.ac.il
+  - given-names: Devora
+    name-particle: Siminovsky
+    affiliation: Bar-Ilan University
+    email: devora.siminovsky@biu.ac.il
+  - given-names: Tal
+    name-particle: Yosef
+    affiliation: Bar-Ilan University
+    email: tal.cohen1@biu.ac.il
+  - given-names: Yoram
+    name-particle: Louzoun
+    affiliation: Bar-Ilan University
+    email: louzouy@math.biu.ac.il
+repository-code: 'https://https://github.com/subgraph-filter-suit-project/subgraph_filter_suit'
+abstract: >-
+ Given a large library of graphs finding which of them are not in a given host graph. It allows 4 different types of filtering, all requiering preprocess on the library, then for every given host graph filtering can be done using the preprocess cache. This package also offeres a tool for efficently searching for subgraph in a graph, using the VELCRO algorithm.
+version: 0.1.44
+date-released: '2026-09-14'
