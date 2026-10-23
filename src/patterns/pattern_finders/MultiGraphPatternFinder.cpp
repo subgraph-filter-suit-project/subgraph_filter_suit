@@ -621,10 +621,12 @@ MultiGraphPatternFinder::find_pattern(const double alive_threshold, const bool i
     seed_initial_matches(first_color, leaf_matches);
     setup_random_engine();
 
+    constexpr uint32_t K_MAX = 20U;
     bool failed_add_edge = false;
     bool done_adding_vertices = false;
 
-    while (static_cast<double>(m_alive_graph_indexes.size()) >=
+    while (boost::num_vertices(m_pattern) < K_MAX &&
+           static_cast<double>(m_alive_graph_indexes.size()) >=
            alive_threshold * static_cast<double>(m_graph_list.size()))
     {
         run_one_growth_step(alive_threshold, is_random, leaf_matches, done_adding_vertices,
@@ -637,6 +639,13 @@ MultiGraphPatternFinder::find_pattern(const double alive_threshold, const bool i
         }
 
         log_alive_graph_indexes();
+    }
+
+    if (boost::num_vertices(m_pattern) >= K_MAX)
+    {
+        log_with_thread(LogLevel::INFO,
+                        "Done growing pattern: reached K_MAX of " + std::to_string(K_MAX) +
+                            " vertices.");
     }
 
     return finalize_and_return(start_time);
